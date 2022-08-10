@@ -50,6 +50,8 @@ function wrapWebhook(webhook: string, payload: Object): Promise<void> {
 
 export function getPayload(inputs: Readonly<Inputs>): Object {
   const ctx = github.context;
+  logInfo(`ctx: ${ctx}`);
+
   const { owner, repo } = ctx.repo;
   const { eventName, sha, ref, workflow, actor, payload } = ctx;
   const repoURL = `https://github.com/${owner}/${repo}`;
@@ -137,7 +139,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   if (inputs.avatar_url) {
     discord_payload.avatar_url = inputs.avatar_url;
   }
-  logDebug(`discord_payload: ${discord_payload}`);
+  logInfo(`discord_payload: ${discord_payload}`);
   return discord_payload;
 }
 
