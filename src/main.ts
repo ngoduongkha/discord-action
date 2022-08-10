@@ -134,7 +134,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   logDebug(`embed: ${JSON.stringify(embed)}`);
 
   if (inputs.mention) {
-    const discordId = account.get("ngoduongkhakg2001@gmail.com");
+    const discordId = account.get(actor) || "1006751487898165280";
     discord_payload.content = `Commit fail rui nghe <@${discordId}>`;
   }
   if (inputs.username) {
