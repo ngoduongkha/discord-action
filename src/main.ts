@@ -127,6 +127,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   }
 
   let discord_payload: any = {
+    content: "abc",
     embeds: [fitEmbed(embed)],
   };
   logDebug(`embed: ${JSON.stringify(embed)}`);
@@ -137,7 +138,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   if (inputs.avatar_url) {
     discord_payload.avatar_url = inputs.avatar_url;
   }
-  discord_payload.content = discord_payload;
+
   return discord_payload;
 }
 
