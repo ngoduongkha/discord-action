@@ -127,7 +127,6 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   }
 
   let discord_payload: any = {
-    content: ctx,
     embeds: [fitEmbed(embed)],
   };
   logDebug(`embed: ${JSON.stringify(embed)}`);
