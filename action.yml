@@ -55,7 +55,9 @@ inputs:
     description: "Avoid appending timestamp"
     required: false
     default: "false"
-
+  mention:
+    required: false
+    default: "false"
 runs:
   using: "node16"
   main: "action/index.js"
