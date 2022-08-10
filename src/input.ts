@@ -14,7 +14,7 @@ export interface Inputs {
   nocontext: boolean;
   noprefix: boolean;
   notimestamp: boolean;
-  mention: boolean;
+  default_mention_id: string;
 }
 
 interface StatusOption {
@@ -73,7 +73,7 @@ export function getInputs(): Inputs {
     nocontext: nocontext,
     noprefix: noprefix,
     notimestamp: stob(core.getInput("notimestamp")),
-    mention: stob(core.getInput("mention")),
+    default_mention_id: core.getInput("default_mention_id"),
   };
 
   // validate

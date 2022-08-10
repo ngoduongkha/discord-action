@@ -55,9 +55,9 @@ inputs:
     description: "Avoid appending timestamp"
     required: false
     default: "false"
-  mention:
-    required: false
-    default: "false"
+  default_mention_id:
+    description: "Discord Id for mention"
+    required: true
 runs:
   using: "node16"
   main: "action/index.js"

@@ -51,7 +51,7 @@ function wrapWebhook(webhook: string, payload: Object): Promise<void> {
 
 export function getPayload(inputs: Readonly<Inputs>): Object {
   const ctx = github.context;
-  logInfo(JSON.stringify(ctx));
+
   const { owner, repo } = ctx.repo;
   const { eventName, sha, ref, workflow, actor, payload } = ctx;
   const repoURL = `https://github.com/${owner}/${repo}`;
@@ -133,8 +133,8 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   };
   logDebug(`embed: ${JSON.stringify(embed)}`);
 
-  if (inputs.mention) {
-    const discordId = account.get(actor) || "1006751487898165280";
+  if (inputs.status != "success") {
+    const discordId = account.get(actor) || inputs.default_mention_id;
     discord_payload.content = `Commit fail rui nghe <@${discordId}>`;
   }
   if (inputs.username) {
