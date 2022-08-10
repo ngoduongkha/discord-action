@@ -137,7 +137,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   if (inputs.avatar_url) {
     discord_payload.avatar_url = inputs.avatar_url;
   }
-
+  logDebug(`discord_payload: ${discord_payload}`);
   return discord_payload;
 }
 
