@@ -5,7 +5,6 @@ import { formatEvent } from "./format";
 import { getInputs, Inputs, statusOpts } from "./input";
 import { logDebug, logError, logInfo } from "./utils";
 import { fitEmbed } from "./validate";
-import { account } from "./account";
 
 async function run() {
   try {
@@ -55,7 +54,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   const { owner, repo } = ctx.repo;
   const { eventName, sha, ref, workflow, actor, payload, runId } = ctx;
   const repoURL = `https://github.com/${owner}/${repo}`;
-  const workflowURL = `${repoURL}/run/${runId}`;
+  const workflowURL = `${repoURL}/actions/runs/${runId}`;
 
   logDebug(JSON.stringify(payload));
 
