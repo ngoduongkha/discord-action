@@ -140,8 +140,8 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
       : `Well done <@&${inputs.discord_role_id}> 🔥🔥🔥`;
   } else if (inputs.status === "failure") {
     discord_payload.content = discordId
-      ? `Commit failure <@${discordId}> 📣\nCheck and fix it 🔨`
-      : `Commit failure <@&${inputs.discord_role_id}> 📣\nCheck and fix it 🔨`;
+      ? `Commit failure <@${discordId}> 💥💥💥\nCheck and fix it 🔨`
+      : `Commit failure <@&${inputs.discord_role_id}> 💥💥💥\nCheck and fix it 🔨`;
   } else {
     discord_payload.content = discordId
       ? `Not handle <@${discordId}> ❗❗❗`
