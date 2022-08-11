@@ -75,7 +75,7 @@ export function getInputs(): Inputs {
     noprefix: noprefix,
     notimestamp: stob(core.getInput("notimestamp")),
     default_mention_id: core.getInput("default_mention_id"),
-    json: JSON.stringify(core.getInput("json")),
+    json: core.getInput("json"),
   };
 
   // validate
