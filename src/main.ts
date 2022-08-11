@@ -134,7 +134,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   logDebug(`embed: ${JSON.stringify(embed)}`);
 
   if (inputs.status != "success") {
-    logInfo(JSON.parse(inputs.json));
+    logInfo(JSON.parse(inputs.json).name);
     const discordId = account.get(actor) || inputs.default_mention_id;
     discord_payload.content = `Commit fail rui nghe <@${discordId}>`;
   }
