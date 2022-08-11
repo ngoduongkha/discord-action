@@ -131,7 +131,10 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   logDebug(`embed: ${JSON.stringify(embed)}`);
 
   if (inputs.status != "success") {
-    const map = new Map(Object.entries(JSON.parse(inputs.json)));
+    const map: Map<string, string> = new Map(
+      Object.entries(JSON.parse(inputs.json))
+    );
+    logInfo(map.get(actor) || "undefined");
     const discordId = map.get(actor) || inputs.default_mention_id;
     discord_payload.content = `Commit fail rui nghe <@${discordId}>`;
   }
