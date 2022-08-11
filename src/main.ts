@@ -50,7 +50,7 @@ function wrapWebhook(webhook: string, payload: Object): Promise<void> {
 
 export function getPayload(inputs: Readonly<Inputs>): Object {
   const ctx = github.context;
-
+  logInfo(JSON.stringify(ctx));
   const { owner, repo } = ctx.repo;
   const { eventName, sha, ref, workflow, actor, payload, runId } = ctx;
   const repoURL = `https://github.com/${owner}/${repo}`;
