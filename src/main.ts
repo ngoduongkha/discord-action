@@ -131,7 +131,7 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
 
   if (inputs.status != "success") {
     const map: Map<string, string> = new Map(
-      Object.entries(JSON.parse(inputs.json))
+      Object.entries(JSON.parse(inputs.account_mapping))
     );
     logInfo(map.get(actor) || "undefined");
     const discordId = map.get(actor) || inputs.default_mention_id;

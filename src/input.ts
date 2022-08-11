@@ -15,7 +15,7 @@ export interface Inputs {
   noprefix: boolean;
   notimestamp: boolean;
   default_mention_id: string;
-  json: string;
+  account_mapping: string;
 }
 
 interface StatusOption {
@@ -75,7 +75,7 @@ export function getInputs(): Inputs {
     noprefix: noprefix,
     notimestamp: stob(core.getInput("notimestamp")),
     default_mention_id: core.getInput("default_mention_id"),
-    json: core.getInput("json"),
+    account_mapping: core.getInput("account_mapping"),
   };
 
   // validate

@@ -58,7 +58,8 @@ inputs:
   default_mention_id:
     description: "Default discord id for mention"
     required: true
-  json:
+  account_mapping:
+    description: "Json mapping github user and discord id"
     require: true
 runs:
   using: "node16"
