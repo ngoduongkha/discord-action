@@ -53,12 +53,9 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   const ctx = github.context;
 
   const { owner, repo } = ctx.repo;
-  const { eventName, sha, ref, workflow, actor, payload } = ctx;
+  const { eventName, sha, ref, workflow, actor, payload, runId } = ctx;
   const repoURL = `https://github.com/${owner}/${repo}`;
-  // if the trigger is pull_request, check `github.event.pull_request.head.sha` first.
-  // see issues/132
-  const validSHA = ctx.payload.pull_request?.head?.sha || sha;
-  const workflowURL = `${repoURL}/commit/${validSHA}/checks`;
+  const workflowURL = `${repoURL}/run/${runId}`;
 
   logDebug(JSON.stringify(payload));
 
@@ -134,8 +131,8 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   logDebug(`embed: ${JSON.stringify(embed)}`);
 
   if (inputs.status != "success") {
-    logInfo(JSON.parse(inputs.json).name);
-    const discordId = account.get(actor) || inputs.default_mention_id;
+    const map = new Map(Object.entries(JSON.parse(inputs.json)));
+    const discordId = map.get(actor) || inputs.default_mention_id;
     discord_payload.content = `Commit fail rui nghe <@${discordId}>`;
   }
   if (inputs.username) {
