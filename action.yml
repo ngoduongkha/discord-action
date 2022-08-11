@@ -56,8 +56,10 @@ inputs:
     required: false
     default: "false"
   default_mention_id:
-    description: "Discord Id for mention"
+    description: "Default discord id for mention"
     required: true
+  json:
+    require: true
 runs:
   using: "node16"
   main: "action/index.js"
