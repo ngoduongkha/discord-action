@@ -129,14 +129,25 @@ export function getPayload(inputs: Readonly<Inputs>): Object {
   };
   logDebug(`embed: ${JSON.stringify(embed)}`);
 
-  if (inputs.status != "success") {
-    const map: Map<string, string> = new Map(
-      Object.entries(JSON.parse(inputs.account_mapping))
-    );
-    logInfo(map.get(actor) || "undefined");
-    const discordId = map.get(actor) || inputs.default_mention_id;
-    discord_payload.content = `Commit fail rui nghe <@${discordId}>`;
+  const accounts: Map<string, string> = new Map(
+    Object.entries(JSON.parse(inputs.account_mapping))
+  );
+  const discordId = accounts.get(actor);
+
+  if (inputs.status === "success") {
+    discord_payload.content = discordId
+      ? `Well done <@${discordId}> 🔥🔥🔥`
+      : `Well done <@&${inputs.discord_role_id}> 🔥🔥🔥`;
+  } else if (inputs.status === "failure") {
+    discord_payload.content = discordId
+      ? `Commit failure <@${discordId}> 📣\nCheck and fix it 🔨`
+      : `Commit failure <@&${inputs.discord_role_id}> 📣\nCheck and fix it 🔨`;
+  } else {
+    discord_payload.content = discordId
+      ? `Not handle <@${discordId}> ❗❗❗`
+      : `Not handle <@&${inputs.discord_role_id}> ❗❗❗`;
   }
+
   if (inputs.username) {
     discord_payload.username = inputs.username;
   }

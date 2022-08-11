@@ -14,7 +14,7 @@ export interface Inputs {
   nocontext: boolean;
   noprefix: boolean;
   notimestamp: boolean;
-  default_mention_id: string;
+  discord_role_id: string;
   account_mapping: string;
 }
 
@@ -74,7 +74,7 @@ export function getInputs(): Inputs {
     nocontext: nocontext,
     noprefix: noprefix,
     notimestamp: stob(core.getInput("notimestamp")),
-    default_mention_id: core.getInput("default_mention_id"),
+    discord_role_id: core.getInput("discord_role_id"),
     account_mapping: core.getInput("account_mapping"),
   };
 

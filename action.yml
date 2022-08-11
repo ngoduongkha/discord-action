@@ -55,8 +55,8 @@ inputs:
     description: "Avoid appending timestamp"
     required: false
     default: "false"
-  default_mention_id:
-    description: "Default discord id for mention"
+  discord_role_id:
+    description: "In case missing discord id"
     required: true
   account_mapping:
     description: "Json mapping github user and discord id"
